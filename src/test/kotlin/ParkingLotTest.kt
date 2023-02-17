@@ -1,7 +1,7 @@
 import entities.ParkingReceipt
 import entities.ParkingTicket
-import org.junit.jupiter.api.Assertions.assertDoesNotThrow
-import org.junit.jupiter.api.Assertions.assertEquals
+import exceptions.SpotAlreadyFreeException
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.util.*
 import kotlin.test.assertIs
@@ -90,5 +90,21 @@ class ParkingLotTest{
         val parkingReceipt = parkingLot.unpark(parkingTicket, exitDateTime)
 
         assertEquals(expected, parkingReceipt)
+    }
+
+    @Test
+    fun `should not be able to unpark from a spot that was not parked on`() {
+        val parkingLot = ParkingLot()
+        val fakeParkingTicket = ParkingTicket(1, 1, Date())
+
+        assertThrows(SpotAlreadyFreeException::class.java) { parkingLot.unpark(fakeParkingTicket) }
+    }
+
+    @Test
+    fun `should not be able to unpark from a spot that does not exist`() {
+        val parkingLot = ParkingLot(1)
+        val fakeParkingTicket = ParkingTicket(1, 2, Date())
+
+        assertThrows(SpotAlreadyFreeException::class.java) { parkingLot.unpark(fakeParkingTicket) }
     }
 }
