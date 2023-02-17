@@ -15,4 +15,7 @@ data class ParkingTicket(
                 Entry Date-time: $entryDateTime
         """.trimIndent()
     }
+
+    fun getSpotNumber() = ticketNumber
+    fun getEntryDateTime() = entryDateTime
 }
