@@ -68,10 +68,27 @@ class ParkingLotTest{
     Receipt Number: 1
     Entry Date-time: Wed Feb 15 03:06:07 IST 2023
     Exit Date-time: Wed Feb 15 05:06:07 IST 2023
-    Fees: 10"""
+    Fees: 20"""
 
         val parkingReceipt = parkingLot.unpark(parkingTicket, exitDateTime)
 
         assertEquals(expected, parkingReceipt.toString())
+    }
+
+    @Test
+    fun `should get parking receipt with correct fee amount`() {
+        val durationInHours = 5
+        val ratePerHour = 10
+
+        val parkingLot = ParkingLot()
+        val entryDateTime = Date(1676410567394)
+        val parkingTicket = parkingLot.park(entryDateTime)
+        val exitDateTime = Date(1676410567394 + 1000 * 3600 * durationInHours)
+        val expectedFee = durationInHours * ratePerHour
+        val expected = ParkingReceipt(1, entryDateTime, exitDateTime, expectedFee)
+
+        val parkingReceipt = parkingLot.unpark(parkingTicket, exitDateTime)
+
+        assertEquals(expected, parkingReceipt)
     }
 }
