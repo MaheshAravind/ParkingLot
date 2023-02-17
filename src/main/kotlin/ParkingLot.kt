@@ -2,9 +2,9 @@ import entities.ParkingTicket
 import models.ParkingSpots
 import java.util.*
 
-class ParkingLot() {
+class ParkingLot(capacity: Int = 100) {
     private var ticketNumber = 1
-    private val parkingSpots: ParkingSpots = ParkingSpots()
+    private val parkingSpots: ParkingSpots = ParkingSpots(capacity)
 
     fun park(entryDateTime: Date = Date()): ParkingTicket {
         val newTicketNumber = generateTicketNumber()

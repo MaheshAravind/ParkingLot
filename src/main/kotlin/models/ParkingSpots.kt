@@ -3,7 +3,7 @@ package models
 import exceptions.ParkingLotFullException
 import exceptions.SpotAlreadyFreeException
 
-class ParkingSpots(private val capacity: Int = 100) {
+class ParkingSpots(private val capacity: Int) {
     private val freeSpots = Array(capacity) { it + 1 }.toMutableSet()
 
     fun findAndReserveFreeSpot(): Int {

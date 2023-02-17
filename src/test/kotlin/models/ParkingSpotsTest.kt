@@ -9,7 +9,7 @@ import kotlin.test.assertIs
 class ParkingSpotsTest {
     @Test
     fun `should get spot number of free spot`() {
-        val parkingSpots = ParkingSpots()
+        val parkingSpots = ParkingSpots(1)
 
         val spotNumber = parkingSpots.findAndReserveFreeSpot()
 
@@ -25,7 +25,7 @@ class ParkingSpotsTest {
 
     @Test
     fun `should be able to free spot`() {
-        val parkingSpots = ParkingSpots()
+        val parkingSpots = ParkingSpots(1)
 
         val spotNumber = parkingSpots.findAndReserveFreeSpot()
 
