@@ -1,5 +1,18 @@
 package entities
 
-class ParkingTicket {
+import java.util.*
 
+data class ParkingTicket(
+    private val ticketNumber: Int,
+    private val spotNumber: Int,
+    private val entryDateTime: Date
+) {
+    override fun toString(): String {
+        return """
+            Parking Ticket:
+                Ticket Number: $ticketNumber
+                Spot Number: $spotNumber
+                Entry Date-time: $entryDateTime
+        """.trimIndent()
+    }
 }
