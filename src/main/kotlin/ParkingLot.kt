@@ -17,8 +17,8 @@ class ParkingLot(capacity: Int = 100) {
     }
 
     fun unpark(ticket: ParkingTicket, exitDateTime: Date = Date()): ParkingReceipt {
-        val spotNumber = ticket.getSpotNumber()
-        parkingSpots.freeSpot(spotNumber)
+        val newSpotNumber = ticket.getSpotNumber()
+        parkingSpots.freeSpot(newSpotNumber)
 
         val newReceiptNumber = generateReceiptNumber()
         val entryDateTime = ticket.getEntryDateTime()
